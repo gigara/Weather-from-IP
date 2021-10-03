@@ -6,7 +6,46 @@
 </head>
 
 <body>
+    <nav class="navbar background">
+        <ul class="nav-list">
+            <li><a href="#weather">Weather</a></li>
+        </ul>
+
+    </nav>
+ 
+    <section class="firstsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="web">
+                    Weather from API
+                </h1>
+                 
+                <p class="text-small">
+                    Using Geo API
+                </p>
+ 
+ 
+            </div>
+        </div>
+    </section>
+ 
+    <section class="section">
+        <div class="paras">
+ 
+            <p id="weather">
+            </p>
+            <p class="text-small">
+                Location
+            </p>
+            <p id="location">
+            </p>
+ 
+        </div>
+ 
+    </section>
+
     <script lang="text/javascript">
+    getWeather();
 
         async function getLocation() {
             return fetch('https://api64.ipify.org?format=json')
@@ -21,6 +60,7 @@
                         .then(function (data) {
                             var location = data['location'];
                             console.log(location);
+                            document.getElementById("location").innerHTML = location;
                             return location;
                         })
                         .catch(function (e) {
@@ -49,6 +89,7 @@
                     console.log("\n\n### Weather Result ###");
                     console.log(weather[0]);
                     console.log(temp);
+                    document.getElementById("weather").innerHTML = weather[0];
                 })
                 .catch(function (e) {
                     console.log(e);
